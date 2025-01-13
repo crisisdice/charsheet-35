@@ -17,7 +17,9 @@ compatibility_flags = ["nodejs_compat"]
 # - https://developers.cloudflare.com/pages/functions/bindings/#environment-variables
 # Note: Use secrets to store sensitive data.
 # - https://developers.cloudflare.com/pages/functions/bindings/#secrets
-# [vars]
+[vars]
+PUBLIC_DISCORD_CLIENT_ID="1327247534648725554"
+PUBLIC_DISCORD_REDIRECT_URL="https://charsheet-35-live.pages.dev"
 # MY_VARIABLE = "production_value"
 
 # Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
