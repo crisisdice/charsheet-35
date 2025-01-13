@@ -1,6 +1,7 @@
 import type { RequestEvent } from '@sveltejs/kit';
 import { sha256 } from '@oslojs/crypto/sha2';
 import { encodeBase64url, encodeHexLowerCase } from '@oslojs/encoding';
+import type { Session, User } from '@prisma/client';
 
 import { getPrisma } from '$lib/db';
 import { env } from '$env/dynamic/private';
@@ -8,6 +9,24 @@ import { env } from '$env/dynamic/private';
 const DAY_IN_MS = 1000 * 60 * 60 * 24;
 
 export const sessionCookieName = 'auth-session';
+
+export async function generateOauthSession(
+  discordUsername: string
+): Promise<{ user: User; session: Session } | { user: null; session: null }> {
+  const prisma = getPrisma(env);
+
+  const user = await prisma.user.findFirst({ where: { discordUsername } });
+
+  console.log({ discordUsername, user: user?.id ?? null });
+
+  if (user == null) {
+    return { user, session: null };
+  }
+
+  const session = await createSession(user.id, prisma);
+
+  return { user, session };
+}
 
 function generateSessionToken() {
   const bytes = crypto.getRandomValues(new Uint8Array(18));
