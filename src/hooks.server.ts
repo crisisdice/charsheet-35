@@ -39,6 +39,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   event.locals.session = session;
 
   if (event.url.pathname === LOGIN) {
+    // TODO redirect to original content on good login
     return resolve(event);
   }
 
