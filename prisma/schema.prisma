@@ -2,7 +2,7 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
   previewFeatures = ["driverAdapters"]
 }
 
@@ -12,37 +12,38 @@ datasource db {
 }
 
 model User {
-  id        Int         @id @default(autoincrement())
-  email     String
+  id              Int     @id @default(autoincrement())
+  email           String?
+  discordUsername String? @map("discord_username")
 
-  passwordHash String @map("password_hash")
+  passwordHash String? @map("password_hash")
 
   characters Character[]
-  sessions Session[]
+  sessions   Session[]
 
   @@map("users")
 }
 
 model Character {
   id Int @id @default(autoincrement())
-  
+
   userId Int
 
   payload Json
-  
-  user   User @relation(fields: [userId], references: [id])
+
+  user User @relation(fields: [userId], references: [id])
 
   @@map("characters")
 }
 
 model Session {
   id String @unique
-  
+
   userId Int
 
   expiresAt DateTime @map("expires_at")
 
-  user   User @relation(fields: [userId], references: [id])
+  user User @relation(fields: [userId], references: [id])
 
   @@map("sessions")
 }
