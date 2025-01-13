@@ -1,0 +1,48 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  previewFeatures = ["driverAdapters"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int         @id @default(autoincrement())
+  email     String
+
+  passwordHash String @map("password_hash")
+
+  characters Character[]
+  sessions Session[]
+
+  @@map("users")
+}
+
+model Character {
+  id Int @id @default(autoincrement())
+  
+  userId Int
+
+  payload Json
+  
+  user   User @relation(fields: [userId], references: [id])
+
+  @@map("characters")
+}
+
+model Session {
+  id String @unique
+  
+  userId Int
+
+  expiresAt DateTime @map("expires_at")
+
+  user   User @relation(fields: [userId], references: [id])
+
+  @@map("sessions")
+}
