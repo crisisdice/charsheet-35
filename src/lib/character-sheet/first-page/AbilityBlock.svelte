@@ -3,9 +3,11 @@
 
 	import type { AbilityName } from '../../types.ts'
 
-	import { rollDice } from '../../server'
-	import { character, sheetIsLocked } from '../data/store.svelte'
-	import { toAbilityScore, toAbilityScoreNumerical } from '../utilities'
+	import { rollDice } from '../../client-calls'
+	import { toAbilityScore, toAbilityScoreNumerical } from '../../utilities'
+	import { getCharacter, sheetIsLocked } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	const keys = [
 		'Ability Name',

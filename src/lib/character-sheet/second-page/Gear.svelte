@@ -5,7 +5,9 @@
 	import ProtectiveItem from './ProtectiveItem.svelte'
 	import Shield from './Shield.svelte'
 
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 </script>
 
 <div class="flex-column" style="gap: 10px; justify-content: space-between; height: 100%;">

@@ -2,9 +2,11 @@
 	import Box from '../common/Box.svelte'
 	import ArmorClass from './ArmorClass.svelte'
 
-	import { character, sheetIsLocked } from '../data/store.svelte'
+	import { getCharacter, sheetIsLocked } from '../data/store.svelte'
 	import CurrentHealth from './CurrentHealth.svelte'
 	import NonlethalDamage from './NonlethalDamage.svelte'
+
+	const character = getCharacter()
 
 	const headers = [
 		{

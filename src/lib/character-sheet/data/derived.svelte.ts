@@ -2,7 +2,7 @@ import type { Operand } from '../types'
 import type { SkillEntry } from '../skills'
 import type { Abilities, Character, Saves, Attack } from '../../types'
 
-import { getSign, toAbilityScoreNumerical } from '../utilities'
+import { getSign, toAbilityScoreNumerical } from '../../utilities'
 import { SIZE_BONUSES } from '../system/size'
 import { CLASS_STATS } from '../system/classes'
 import { ARMOR, ENCUMBERANCE, WEAPONS } from '../system/gear'

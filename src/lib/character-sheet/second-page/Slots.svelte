@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { ordinalIndicator } from '../utilities'
+	import { ordinalIndicator } from '$lib/utilities'
 </script>
 
 <table>

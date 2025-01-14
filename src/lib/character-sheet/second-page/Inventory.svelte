@@ -1,9 +1,11 @@
 <script lang="ts">
 	import Money from './Money.svelte'
-
-	import { character } from '../data/store.svelte'
-	import { totalWeight } from '../data/derived.svelte'
 	import Encumberance from './Encumberance.svelte'
+
+	import { totalWeight } from '../data/derived.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	const weight = $derived(totalWeight(character))
 

@@ -5,7 +5,9 @@
 	import SpellResistance from './boxes/SpellResistance.svelte'
 
 	import { baseAttackBonus, grappleOperands, grappleSum } from '../data/derived.svelte'
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	const baseAttack = $derived(baseAttackBonus(character))
 	const { operands } = $derived(grappleOperands(character))

@@ -1,6 +1,8 @@
 <script lang="ts">
-	import type { CharacterMetadata } from '../../types.ts'
-	import { character, sheetIsLocked } from '../data/store.svelte'
+	import type { CharacterMetadata } from '$lib/types.ts'
+	import { getCharacter, sheetIsLocked } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	function getKeyText(key: keyof CharacterMetadata) {
 		return key === 'name' ? 'Character Name' : key
@@ -31,7 +33,7 @@
 	<div class="container">
 		{#each keys as key}
 			<input
-				type={key === 'level' ? 'number' : 'text'}
+				type={`${key === 'level' ? 'number' : 'text'}`}
 				id={key}
 				bind:value={character.metadata[key]}
 				style={`grid-area: ${key};`}

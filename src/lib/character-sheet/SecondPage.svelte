@@ -3,9 +3,9 @@
 	import List from './second-page/List.svelte'
 	import Spells from './second-page/Spells.svelte'
 
-	import { character } from './data/store.svelte'
+	import { getCharacter } from './data/store.svelte'
 
-	$inspect(character)
+	const character = getCharacter()
 </script>
 
 <div>

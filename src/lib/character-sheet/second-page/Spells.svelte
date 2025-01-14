@@ -4,8 +4,10 @@
 	import SpellSave from './SpellSave.svelte'
 	import SpellsList from './SpellsList.svelte'
 
-	import { character } from '../data/store.svelte'
 	import { spellStatistics } from '../data/derived.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	const { spellSave, arcaneSpellFailure } = $derived(spellStatistics(character))
 </script>

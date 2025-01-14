@@ -1,8 +1,10 @@
 <script lang="ts">
 	import Box from '../../common/Box.svelte'
 
-	import { rollDice } from '../../../server'
-	import { character } from '../../data/store.svelte'
+	import { rollDice } from '../../../client-calls'
+	import { getCharacter } from '../../data/store.svelte'
+
+	const character = getCharacter()
 
 	const { save, ability, value }: { save: string; ability: string; value: number } = $props()
 

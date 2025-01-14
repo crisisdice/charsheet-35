@@ -1,9 +1,21 @@
 <script lang="ts">
-	import FirstPage from './lib/FirstPage.svelte'
-	import SecondPage from './lib/SecondPage.svelte'
+	import { setContext } from 'svelte'
 
-	import { character, backup, toggleLevelUpMode } from './lib/data/store.svelte'
-	import { copy, syncChanges } from './server'
+	import type { PageServerData } from './$types'
+	import { page } from '$app/state'
+
+	import { toggleLevelUpMode, backup } from '$lib/character-sheet/data/store.svelte'
+
+	import FirstPage from '$lib/character-sheet/FirstPage.svelte'
+	import SecondPage from '$lib/character-sheet/SecondPage.svelte'
+
+	import { copy, syncChanges } from '$lib/client-calls'
+
+	let { data }: { data: PageServerData } = $props()
+
+	let character = $state(data.character)
+
+	setContext('character', character)
 
 	// TODO pretty nav bar
 
@@ -14,15 +26,15 @@
 		open = !open
 	}
 
-	// TODO initial fetch / mapping to server type
-
 	const changes = $derived(copy(character))
+
+	const id = page.params.id
 
 	$effect(() => {
 		console.log(changes)
 
 		const timer = setTimeout(() => {
-			syncChanges(changes, $backup)
+			syncChanges(id, changes, $backup)
 			backup.set(changes)
 		}, 1000)
 
@@ -57,6 +69,7 @@
 			}}>Second Page</button
 		>
 		<button onclick={toggleLevelUpMode}>Level Up Mode</button>
+		<a href="/characters" style="text-decoration: none;"><button>My Characters</button></a>
 	</nav>
 
 	<div style={`margin-left: ${open ? '190px' : ''}; margin-top:60px;`}>

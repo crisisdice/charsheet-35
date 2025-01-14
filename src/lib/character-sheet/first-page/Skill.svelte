@@ -2,9 +2,11 @@
 	import Checkbox from './Checkbox.svelte'
 
 	import type { SkillEntry } from '../skills'
-	import { character, sheetIsLocked } from '../data/store.svelte'
+	import { getCharacter, sheetIsLocked } from '../data/store.svelte'
 	import { skillModifier } from '../data/derived.svelte'
-	import { rollDice } from '../../server'
+	import { rollDice } from '../../client-calls'
+
+	const character = getCharacter()
 
 	const { skill }: { skill: SkillEntry } = $props()
 

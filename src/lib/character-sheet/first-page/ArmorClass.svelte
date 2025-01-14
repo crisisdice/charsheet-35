@@ -3,7 +3,9 @@
 	import ArmorClassBox from './boxes/ArmorClassBox.svelte'
 
 	import { armorClasses } from '../data/derived.svelte'
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	const { operands, armorClass } = $derived(armorClasses(character))
 

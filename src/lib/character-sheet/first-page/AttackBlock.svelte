@@ -7,9 +7,11 @@
 
 	let { attack: binding = $bindable() }: { attack: string | null } = $props()
 
-	import { character } from '../data/store.svelte'
 	import { attackBonus, attackBonusString, damageBonus } from '../data/derived.svelte'
-	import { rollDiceContent, rollDiceRequest } from '../../server'
+	import { rollDiceContent, rollDiceRequest } from '../../client-calls'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	const headers = $derived([
 		{ width: 40, name: 'Attack', valueGetter: ({ name }: Attack) => name },

@@ -1,5 +1,7 @@
 <script lang="ts">
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 </script>
 
 <table>

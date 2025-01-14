@@ -1,7 +1,9 @@
 <script lang="ts">
 	import AttackBlock from './AttackBlock.svelte'
 
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 </script>
 
 <div>

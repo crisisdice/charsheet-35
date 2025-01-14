@@ -1,5 +1,5 @@
 <script lang="ts">
-	import variables from '../../variables.module.scss'
+	import variables from '../../../variables.module.scss'
 
 	const { fontMedium, fontSmall } = variables
 

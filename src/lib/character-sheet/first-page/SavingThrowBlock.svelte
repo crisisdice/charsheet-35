@@ -5,7 +5,9 @@
 	import type { Abilities, Saves } from '../../types'
 
 	import { savingThrow } from '../data/derived.svelte'
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	const {
 		save,

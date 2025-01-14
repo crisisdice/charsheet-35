@@ -1,9 +1,11 @@
 <script lang="ts">
 	import type { Character } from '../../types'
 
-	import { ordinalIndicator } from '../utilities'
+	import { ordinalIndicator } from '$lib/utilities'
 
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	const levels = Object.keys(character.spells) as (keyof Character['spells'])[]
 </script>

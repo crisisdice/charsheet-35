@@ -4,7 +4,9 @@
 	import { ARMOR as options } from '../system/gear'
 
 	import type { Armor } from '../../types'
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
+
+	const character = getCharacter()
 
 	const headers = [
 		{ width: 44, name: 'Armor/Protective Item', valueGetter: ({ name }: Armor) => name },

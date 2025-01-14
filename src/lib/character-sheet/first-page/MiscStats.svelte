@@ -4,8 +4,10 @@
 	import FlatFootedAc from './boxes/FlatFootedAc.svelte'
 	import Initiative from './boxes/Initiative.svelte'
 
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
 	import { armorClasses, initiativeOperands, initiativeSum } from '../data/derived.svelte'
+
+	const character = getCharacter()
 
 	const { touchArmorClass: touchAc, flatFootedArmorClass: flatFootedAc } = $derived(
 		armorClasses(character)

@@ -1,6 +1,8 @@
 <script lang="ts">
-	import { character } from '../data/store.svelte'
+	import { getCharacter } from '../data/store.svelte'
 	import { encumberance } from '../data/derived.svelte'
+
+	const character = getCharacter()
 
 	const headers = $derived(encumberance(character))
 </script>

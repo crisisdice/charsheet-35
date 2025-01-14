@@ -1,7 +1,9 @@
 <script lang="ts">
-	import { rollDice } from '../../../server'
+	import { rollDice } from '../../../client-calls'
 	import Box from '../../common/Box.svelte'
-	import { character } from '../../data/store.svelte'
+	import { getCharacter } from '../../data/store.svelte'
+
+	const character = getCharacter()
 
 	const { initiative: value }: { initiative: number } = $props()
 
