@@ -1,18 +1,18 @@
-import { writable } from 'svelte/store'
-import { getContext } from 'svelte'
+import { writable } from 'svelte/store';
+import { getContext } from 'svelte';
 
-import type { Character } from '$lib/types'
+import type { Character } from '$lib/types';
 
-export const getCharacter = () => getContext('character') as Character
+export const getCharacter = () => getContext('character') as Character;
 
-export const backup = writable<Character>()
+export const backup = writable<Character>();
 
-let levelUpMode = $state<boolean>(false)
+let levelUpMode = $state<boolean>(false);
 
 export function toggleLevelUpMode() {
-	levelUpMode = !levelUpMode
+  levelUpMode = !levelUpMode;
 }
 
 export function sheetIsLocked() {
-	return !levelUpMode
+  return !levelUpMode;
 }

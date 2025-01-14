@@ -1,11 +1,11 @@
 <script lang="ts">
-	import Box from '../../common/Box.svelte'
+  import Box from '../../common/Box.svelte';
 
-	const { grappleModifier: value }: { grappleModifier: number } = $props()
+  const { grappleModifier: value }: { grappleModifier: number } = $props();
 
-	const short = 'Grapple'
-	const long = 'Modifier'
-	const width = '100px'
+  const short = 'Grapple';
+  const long = 'Modifier';
+  const width = '100px';
 </script>
 
 <Box {short} {long} {value} {width} disabled />

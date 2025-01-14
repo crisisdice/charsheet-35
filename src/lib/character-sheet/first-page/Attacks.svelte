@@ -1,15 +1,15 @@
 <script lang="ts">
-	import AttackBlock from './AttackBlock.svelte'
+  import AttackBlock from './AttackBlock.svelte';
 
-	import { getCharacter } from '../data/store.svelte'
+  import { getCharacter } from '../data/store.svelte';
 
-	const character = getCharacter()
+  const character = getCharacter();
 </script>
 
 <div>
-	{#each character.gear.attacks as attack}
-		<AttackBlock bind:attack />
-	{/each}
+  {#each character.gear.attacks as attack}
+    <AttackBlock bind:attack />
+  {/each}
 </div>
 
 <style lang="scss">

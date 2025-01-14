@@ -1,37 +1,37 @@
 <script lang="ts">
-	import { getCharacter } from '../data/store.svelte'
-	import { encumberance } from '../data/derived.svelte'
+  import { getCharacter } from '../data/store.svelte';
+  import { encumberance } from '../data/derived.svelte';
 
-	const character = getCharacter()
+  const character = getCharacter();
 
-	const headers = $derived(encumberance(character))
+  const headers = $derived(encumberance(character));
 </script>
 
 <div class="flex-row">
-	{#each headers as { key, value }}
-		<div class="flex-column">
-			<input type="text" {value} id={key} disabled />
-			<label for={key}>{key}</label>
-		</div>
-	{/each}
+  {#each headers as { key, value }}
+    <div class="flex-column">
+      <input type="text" {value} id={key} disabled />
+      <label for={key}>{key}</label>
+    </div>
+  {/each}
 </div>
 
 <style lang="scss">
-	input {
-		max-width: 45px;
-	}
+  input {
+    max-width: 45px;
+  }
 
-	label {
-		font-size: $font-medium;
-		font-weight: bold;
-	}
+  label {
+    font-size: $font-medium;
+    font-weight: bold;
+  }
 
-	.flex-column {
-		align-items: center;
-		text-align: center;
-	}
+  .flex-column {
+    align-items: center;
+    text-align: center;
+  }
 
-	.flex-row {
-		padding: 20px;
-	}
+  .flex-row {
+    padding: 20px;
+  }
 </style>
