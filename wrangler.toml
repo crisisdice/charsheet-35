@@ -19,7 +19,7 @@ compatibility_flags = ["nodejs_compat"]
 # - https://developers.cloudflare.com/pages/functions/bindings/#secrets
 [vars]
 PUBLIC_DISCORD_CLIENT_ID="1327247534648725554"
-PUBLIC_DISCORD_CHANNEL_ID='1327249793461784609'
+PUBLIC_DISCORD_CHANNEL_ID="1281526840191881282"
 PUBLIC_DISCORD_REDIRECT_URL="https://charsheet-35-live.pages.dev"
 # MY_VARIABLE = "production_value"
 

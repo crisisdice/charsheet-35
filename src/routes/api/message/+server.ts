@@ -27,9 +27,7 @@ export const POST: RequestHandler = async (event) => {
     method: 'POST'
   });
 
-  console.log({ content, responseOk: response.ok });
-
-  console.log({ body });
+  console.log({ content, responseOk: response.ok, body: await response.json() });
 
   return new Response();
 };
