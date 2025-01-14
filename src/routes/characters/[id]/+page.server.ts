@@ -4,7 +4,7 @@ import { getPrisma } from '$lib/db';
 import { env } from '$env/dynamic/private';
 import type { PageServerLoad } from './$types';
 import { LOGIN } from '$lib/routes-index';
-import type { Character } from '../../../types';
+import type { Character } from '$lib/types';
 
 export const load: PageServerLoad = async (event) => {
   const user = event.locals.user;

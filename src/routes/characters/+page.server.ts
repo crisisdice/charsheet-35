@@ -3,7 +3,7 @@ import { redirect } from '@sveltejs/kit';
 import { getPrisma } from '$lib/db';
 import { env } from '$env/dynamic/private';
 import type { PageServerLoad } from './$types';
-import type { Character } from '../../types';
+import type { Character } from '$lib/types';
 import { LOGIN } from '$lib/routes-index';
 
 export const load: PageServerLoad = async (event) => {
