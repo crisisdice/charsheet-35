@@ -18,6 +18,7 @@
   setContext('character', character);
 
   // TODO pretty nav bar
+  // TODO fix state chaching issue (always reverts to same character)
 
   let open = $state(false);
   let currentPage = $state(0);
