@@ -42,6 +42,7 @@
     "@prisma/adapter-d1": "^6.2.1",
     "@prisma/adapter-neon": "^6.2.1",
     "@prisma/client": "6.2.1",
+    "@zerodevx/svelte-toast": "^0.9.6",
     "deep-object-diff": "^1.1.9",
     "dotenv": "^16.4.7",
     "sass": "^1.83.4",

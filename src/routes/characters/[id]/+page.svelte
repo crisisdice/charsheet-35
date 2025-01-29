@@ -1,14 +1,15 @@
 <script lang="ts">
   import { setContext } from 'svelte';
 
+  import { SvelteToast } from '@zerodevx/svelte-toast';
+
   import type { PageServerData } from './$types';
   import { page } from '$app/state';
-
-  import { toggleLevelUpMode, backup } from '$lib/character-sheet/data/store.svelte';
 
   import FirstPage from '$lib/character-sheet/FirstPage.svelte';
   import SecondPage from '$lib/character-sheet/SecondPage.svelte';
 
+  import { toggleLevelUpMode, backup } from '$lib/character-sheet/data/store.svelte';
   import { copy, syncChanges } from '$lib/client-calls';
 
   let { data }: { data: PageServerData } = $props();
@@ -80,6 +81,8 @@
       <SecondPage />
     {/if}
   </div>
+
+  <SvelteToast />
 </main>
 
 <style lang="scss">

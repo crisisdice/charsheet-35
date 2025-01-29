@@ -1,4 +1,5 @@
 import { diff } from 'deep-object-diff';
+import { toast } from '@zerodevx/svelte-toast';
 
 import type { Character } from '$lib/types';
 
@@ -73,6 +74,20 @@ export function rollDiceContent(
   return `${prefix} rolled **${sum}** for ${checkName} (**${roll}** base roll ${getSign(modifier)}**${Math.abs(modifier)}** modifier)`;
 }
 
+export function mdToHtmlBold(content: string) {
+  const parts = content.split('**');
+  const newParts = [parts[0]];
+
+  let open = true;
+
+  for (const part of parts.slice(1)) {
+    newParts.push(open ? '<strong>' : '</strong>', part);
+    open = !open;
+  }
+
+  return newParts.join('');
+}
+
 export async function rollDice(
   character: Character,
   checkName: string,
@@ -80,6 +95,12 @@ export async function rollDice(
   modifier: number
 ) {
   const content = `🎲 ${rollDiceContent(character.metadata.name, checkName, diceSize, modifier)} 🎲`;
+
+  toast.push(mdToHtmlBold(content), {
+    theme: {
+      '--toastWidth': '800px'
+    }
+  });
 
   await rollDiceRequest(content);
 }
