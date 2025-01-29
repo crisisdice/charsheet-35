@@ -1,15 +1,17 @@
 <script lang="ts">
+  import { toast } from '@zerodevx/svelte-toast';
+
   import type { Attack } from '../../types';
   import EmphasisBox from '../common/EmphasisBox.svelte';
   import Checkbox from './Checkbox.svelte';
 
   import { AMMUNITION, WEAPONS as options } from '../system/gear';
 
-  let { attack: binding = $bindable() }: { attack: string | null } = $props();
-
   import { attackBonus, attackBonusString, damageBonus } from '../data/derived.svelte';
-  import { rollDiceContent, rollDiceRequest } from '../../client-calls';
+  import { mdToHtmlBold, rollDiceContent, rollDiceRequest } from '../../client-calls';
   import { getCharacter } from '../data/store.svelte';
+
+  let { attack: binding = $bindable() }: { attack: string | null } = $props();
 
   const character = getCharacter();
 
@@ -54,6 +56,12 @@
       attack.damageDice,
       damageModifier
     )} 🎲`;
+
+    toast.push(mdToHtmlBold(content), {
+      theme: {
+        '--toastWidth': '800px'
+      }
+    });
 
     await rollDiceRequest(content);
 
